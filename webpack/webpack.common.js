@@ -1,11 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css提取
-
-
 module.exports = {
     entry: './src/main.js',
     output: {

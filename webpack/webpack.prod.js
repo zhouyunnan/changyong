@@ -3,6 +3,7 @@ const common = require('./webpack.common.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css提取
 
+
 module.exports = merge(common, {
     mode: 'production',
     plugins: [
