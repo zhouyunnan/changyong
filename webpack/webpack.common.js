@@ -1,30 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-var appDir = path.dirname(require.main.filename);
-console.log(appDir);
+
 module.exports = {
-    entry: './src/main.js',
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, '../dist')
+    entry: {
+        main: './src/main.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Management',
-            templateContent:
-                `<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <title>Document</title>
-            </head>
-            <body>
-                <div id="app"></div>
-            </body>
-            </html>`
+            template: path.resolve(__dirname, '../index.html'), //模板路径
         }),
         //vueloader
         new VueLoaderPlugin(),
@@ -34,13 +18,24 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
             }
         ]
     },
+    //移出重复模块
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: "commons",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        }
+    },
+    //采用cdn的方式引用依赖
+    externals: {
+        vue:"Vue",
+        element:"ElementUI"
+    }
 };
