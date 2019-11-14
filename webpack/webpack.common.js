@@ -34,8 +34,8 @@ module.exports = {
         }
     },
     //采用cdn的方式引用依赖
-    externals: {
-        vue:"Vue",
-        element:"ElementUI"
+     externals: {
+        'vue': 'Vue',
+        'element-ui': 'ELEMENT'
     }
 };

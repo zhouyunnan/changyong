@@ -1,15 +1,4 @@
-
-
 export default {
-  //格式化时间
-  FormatTime(data, begin, end, num) {
-
-    if (end == 0 && num != undefined) {
-      return data.substr(begin, num)
-    } else {
-      return data.substring(begin, end);
-    }
-  },
   navs: [
     {
       name: "首页",

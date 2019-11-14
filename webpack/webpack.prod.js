@@ -10,7 +10,6 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css提取
 
 module.exports = merge(common, {
     output: {
-        // publicPath: './',//解决打包路径错误问题
         filename: 'js/[name]-[chunkhash].js',
         path: path.resolve(__dirname, '../dist')
     },
@@ -21,6 +20,7 @@ module.exports = merge(common, {
         new MiniCssExtractPlugin({
             filename: "css/[name][chunkhash].css",
         }),
+        //构建性能分析表
         new StatsWriterPlugin({
             fields: null,
             stats: { chunkModules: true }

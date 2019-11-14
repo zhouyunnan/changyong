@@ -48,7 +48,7 @@
       </div>
       <div class="pub_right_content">
         <div class="main">
-          <welcome v-if="full == '/'"/>
+          <welcome v-if="full == '/'" />
           <router-view></router-view>
         </div>
       </div>
@@ -62,47 +62,7 @@ export default {
     return {
       //菜单栏宽度
       MenuBox_W: 200,
-      Menus: [
-        {
-          name: "首页",
-          link: "home",
-          icon: "iconfont icon-jurassic_home"
-        },
-        {
-          name: "一级菜单",
-          icon: "iconfont icon-dianpu",
-          isopen: false,
-          height: 0,
-          second: [
-            {
-              name: "嵌套路由展示",
-              link: "demo1"
-            },
-            {
-              name: "demo2",
-              link: "demo2"
-            },
-            {
-              name: "demo3",
-              link: "demo3"
-            },
-          ]
-        },
-        {
-          name: "一级菜单",
-          icon: "iconfont icon-dianpu",
-          isopen: false,
-          height: 0,
-          second: [
-            {
-              name: "demo5",
-              link: "demo5"
-            },
-          
-          ]
-        },
-
-      ],
+      Menus: this.$pubfn.navs,
       //当前选中的菜单
       activeMenu: {
         index: 0,
@@ -207,7 +167,7 @@ export default {
       this.$prompt("请输入新密码", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        inputType:"password"
+        inputType: "password"
       })
         .then(({ value }) => {
           if (!/\S/.test(value) || value == null) {
@@ -289,8 +249,8 @@ export default {
     }
   },
   computed: {
-    full(){
-      return this.$route.fullPath
+    full() {
+      return this.$route.fullPath;
     }
   }
 };
