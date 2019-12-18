@@ -34,7 +34,12 @@ module.exports = merge(common, {
             {
                 test: /\.(scss|css)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: "../"
+                        },
+                    },
                     'css-loader',
                     'sass-loader'
                 ]
@@ -47,7 +52,7 @@ module.exports = merge(common, {
                         options: {
                             name: '[path][name].[ext]',
                             outputPath: 'img/',
-                            publicPath: '../../'
+                            // publicPath: '../../'
                         }
                     }
                 ]
